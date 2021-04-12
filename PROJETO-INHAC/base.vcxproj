@@ -99,11 +99,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Amor.cpp" />
+    <ClCompile Include="Cartas.cpp" />
+    <ClCompile Include="Dinheiro.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MontaCartas.cpp" />
+    <ClCompile Include="Saude.cpp" />
+    <ClCompile Include="Secreto.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Amor.h" />
+    <ClInclude Include="Cartas.h" />
+    <ClInclude Include="Dinheiro.h" />
     <ClInclude Include="Jogo.h" />
+    <ClInclude Include="MontaCartas.h" />
+    <ClInclude Include="Saude.h" />
+    <ClInclude Include="Secreto.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
