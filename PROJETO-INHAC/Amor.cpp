@@ -2,6 +2,9 @@
 
 Amor::Amor()
 {
+	//instancia ja o indice em 5, para quando o jogo começar a sprite começar na metade
+	this->indiceAmor = 5;
+
 	carregarStatusAmor();
 }
 
