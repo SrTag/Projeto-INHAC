@@ -1,6 +1,6 @@
 #pragma once
 #include "libUnicornio.h"
-#include "Cartas.h"
+#include "MontaCartas.h"
 
 enum Botoes{bNao,bSim};
 
@@ -12,10 +12,10 @@ public:
 
 	void inicializar();
 	void finalizar();
-
 	void executar();
+
 private:
-	
+
 	BotaoSprite botao[2];
 	
 };

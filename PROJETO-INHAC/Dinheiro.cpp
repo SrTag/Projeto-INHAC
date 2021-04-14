@@ -42,10 +42,11 @@ void Dinheiro::atualizaStatusDinheiro(int att)
 		}
 		else if (att < 0) {
 
-			if (indiceDinheiro > 0)
-			{
-				indiceDinheiro -= att;
-			}
+			indiceDinheiro -= att;
 		}
 	}
+}
+
+void Dinheiro::gameOverDinheiro()
+{
 }

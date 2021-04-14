@@ -49,3 +49,7 @@ void Secreto::atualizaStatusSecreto(int att)
 		}
 	}
 }
+
+void Secreto::gameOverSecreto()
+{
+}

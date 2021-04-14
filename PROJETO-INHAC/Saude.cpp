@@ -36,16 +36,17 @@ void Saude::atualizaStatusSaude(int att)
 		gameOverSaude();
 	}
 	else {
-		if (att > 0 && att < 10)
+		if (att >= 0 && att < 10)
 		{
-			indiceSaude++;
+			indiceSaude += att;
 		}
 		else if (att < 0) {
 
-			if (indiceSaude > 0)
-			{
-				indiceSaude--;
-			}
+			indiceSaude -= att;
 		}
 	}
+}
+
+void Saude::gameOverSaude()
+{
 }

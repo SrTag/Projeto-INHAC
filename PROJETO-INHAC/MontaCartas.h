@@ -12,11 +12,21 @@ class MontaCartas
 private:
 
 	//indice para controlar qual imagem estiver sendo utilizada
-	int indice_imagemCarta;
 	
-	Sprite personagem_carta;
+	ifstream arq_StatusSIM_Cartas;
+	ifstream arq_StatusNAO_Cartas;
+	ifstream baixarDados_Att_Status;
 	//imagens dos personagens
-	Cartas* cartas;
+	//nao esta aceitando ceta
+	Cartas* carta;
+	
+	// esse comando que vai ser utilizado no jogo pro SIM
+	/*carta->setSim(int indicecarta) {
+		carta[indicecarta].setEscolhaSim
+	}
+	*/
+
+	int indice_carta = 0;
 
 	// sao os ponteiros dos status, que irei manipular as sprites,  
 	//para que no jogo possa tanto subir a barra de energia quanto descer
@@ -32,10 +42,11 @@ public:
 	~MontaCartas();
 
 	void carregarSprites();
-	void setCartas();
+	void setSpriteShetStatus();
+	void carregarStatusCartas_Arq();
 	void setPosX_PosY();
 	void MontandoCartas();
-	void attStatus(int proxCarta ,int amor, int saude, int secreto, int dinheiro);
+	void attStatus();
 
 
 	

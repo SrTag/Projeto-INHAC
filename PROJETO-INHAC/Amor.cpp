@@ -36,16 +36,17 @@ void Amor::atualizaStatusAmor(int att)
 		gameOverAmor();
 	}
 	else {
-		if (att > 0 && att < 10)
+		if (att >= 0 && att < 10)
 		{
-			indiceAmor++;
+			indiceAmor += att;
 		}
 		else if (att < 0) {
 
-			if (indiceAmor > 0)
-			{
-				indiceAmor--;
-			}
+			indiceAmor -= att;
 		}
 	}
+}
+
+void Amor::gameOverAmor()
+{
 }
