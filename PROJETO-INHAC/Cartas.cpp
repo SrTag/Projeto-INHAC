@@ -55,16 +55,56 @@ void Cartas::definirPersonagem(int indiceCarta)
 void Cartas::carregarImagens()
 {
 	gRecursos.carregarSpriteSheet("spriteCartas", "assets/SpritesSheet/cartasPersonagens.png", 1, 20);
-	gRecursos.carregarSpriteSheet("spriteBaseTexto", "assets/SpritesSheet/BaseChat.png", 1, 1);
+	gRecursos.carregarSpriteSheet("texto", "assets/SpritesSheet/BaseChat.png", 1, 1);
 
 	cartaAtual.setSpriteSheet("spriteCartas");
-	base_Texto.setSpriteSheet("spriteBaseTexto");
+	base_Texto.setSpriteSheet("texto");
 }
 
 void Cartas::desenharCarta()
 {
 	cartaAtual.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
 	base_Texto.desenhar(gJanela.getLargura() / 2, 100);
+}
+
+int Cartas::getAtt_SIM_Amor()
+{
+	return attStatus_SIM[amor];
+}
+
+int Cartas::getAtt_SIM_Dinheiro()
+{
+	 return attStatus_SIM[dinheiro];
+}
+
+int Cartas::getAtt_SIM_Saude()
+{
+	return attStatus_SIM[saude];
+}
+
+int Cartas::getAtt_SIM_Secreto()
+{
+	return attStatus_SIM[secreto];
+}
+
+int Cartas::getAtt_NAO_Amor()
+{
+	return attStatus_NAO[amor];
+}
+
+int Cartas::getAtt_NAO_Dinheiro()
+{
+	return attStatus_NAO[dinheiro];
+}
+
+int Cartas::getAtt_NAO_Saude()
+{
+	return attStatus_NAO[saude];
+}
+
+int Cartas::getAtt_NAO_Secreto()
+{
+	return attStatus_NAO[secreto];
 }
 
 

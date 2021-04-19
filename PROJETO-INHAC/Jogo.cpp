@@ -11,26 +11,28 @@ Jogo::~Jogo()
 void Jogo::inicializar()
 {
 	uniInicializar(800, 600, false);
-	//gRecursos.carregarSpriteSheet("Botao", "assets/SpritesSheet/VoltarMini.png", 3, 1);
 
-	/*botao[0].setSpriteSheet("Botao");
-	botao[1].setSpriteSheet("Botao");
+	gRecursos.carregarSpriteSheet("BotaoSIM", "assets/SpritesSheet/botaoSim.png", 3, 1);
+	gRecursos.carregarSpriteSheet("BotaoNAO", "assets/SpritesSheet/botaoNao.png", 3, 1);
 
+	botao[bSim].setSpriteSheet("BotaoSIM");
+	botao[bNao].setSpriteSheet("BotaoNao");
+
+
+	botao[bSim].setPos(50, gJanela.getAltura()/ 2);
+	botao[bNao].setPos(750, gJanela.getAltura()/ 2);
 	
-	botao[0].setPos(50, gJanela.getAltura()/ 2);
-	botao[1].setPos(750, gJanela.getAltura()/ 2);
-	*/
-	
+	cartas = new MontaCartas();
 
+	cartas->carregarStatusCartas_Arq();
+	cartas->carregarSprites();
+	cartas->setSpriteShetStatus();
+	cartas->setPosX_PosY();
 	
 }
 
 void Jogo::finalizar()
 {
-	
-		
-
-
 	uniFinalizar();
 }
 
@@ -40,24 +42,25 @@ void Jogo::executar()
 	{
 		uniIniciarFrame();
 		
+		cartas->MontandoCartas();
+		
+		botao[bSim].atualizar();
+		botao[bSim].desenhar();
 
-		botao[0].atualizar();
-		botao[0].desenhar();
-
-		botao[1].atualizar();
-		botao[1].desenhar();
-
+		botao[bNao].atualizar();
+		botao[bNao].desenhar();
+		
 		
 		if (botao[bNao].estaClicado()) {
 			
-			/*
-			Cartas *carta[20]
-			carta = new Carta[20]
-			*/
+			cartas->attStatus(personagem, false);
 		}
 		if (botao[bSim].estaClicado()) {
-		
+			cartas->attStatus(personagem, true);
 		}
+
+		// passa para o proximo personagem ou carta
+		personagem++;
 
 		uniTerminarFrame();
 	}

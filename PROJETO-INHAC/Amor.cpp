@@ -5,7 +5,6 @@ Amor::Amor()
 	//instancia ja o indice em 5, para quando o jogo começar a sprite começar na metade
 	this->indiceAmor = 5;
 
-	carregarStatusAmor();
 }
 
 void Amor::setStatusAmor()
@@ -21,7 +20,8 @@ void Amor::carregarStatusAmor()
 void Amor::desenharSpriteAmor()
 {
 	sprite_Amor.setAnimacao(indiceAmor);
-	sprite_Amor.desenhar(pos_X,pos_Y);
+
+	sprite_Amor.desenhar(this->pos_X,this->pos_Y);
 }
 
 void Amor::definePosX_and_PosY(int x, int y)

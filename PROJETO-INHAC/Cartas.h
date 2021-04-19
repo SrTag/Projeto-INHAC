@@ -24,6 +24,16 @@ public:
 	void carregarImagens();
 	void desenharCarta();
 
+	int getAtt_SIM_Amor();
+	int getAtt_SIM_Dinheiro();
+	int getAtt_SIM_Saude();
+	int getAtt_SIM_Secreto();
+
+	int getAtt_NAO_Amor();
+	int getAtt_NAO_Dinheiro();
+	int getAtt_NAO_Saude();
+	int getAtt_NAO_Secreto();
+
 
 
 };

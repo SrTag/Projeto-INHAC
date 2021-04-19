@@ -5,7 +5,7 @@ Saude::Saude()
 	//instancia ja o indice em 5, para quando o jogo começar a sprite começar na metade
 	this->indiceSaude = 5;
 
-	carregarStatusSaude();
+	
 }
 
 void Saude::carregarStatusSaude()

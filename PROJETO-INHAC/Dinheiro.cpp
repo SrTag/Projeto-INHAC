@@ -5,7 +5,7 @@ Dinheiro::Dinheiro()
 	//instancia ja o indice em 5, para quando o jogo começar a sprite começar na metade
 	this->indiceDinheiro = 5;
 
-	carregarStatusDinheiro();
+	
 }
 
 void Dinheiro::carregarStatusDinheiro()

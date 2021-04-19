@@ -16,6 +16,8 @@ public:
 
 private:
 
+	int personagem;
+	MontaCartas* cartas;
 	BotaoSprite botao[2];
 	
 };

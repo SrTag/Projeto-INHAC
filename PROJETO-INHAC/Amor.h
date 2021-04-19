@@ -7,6 +7,7 @@ class Amor
 private:
 	Sprite sprite_Amor;
 	int pos_X, pos_Y;
+	Vetor2D pos;
 	int indiceAmor;
 public:
 	Amor();

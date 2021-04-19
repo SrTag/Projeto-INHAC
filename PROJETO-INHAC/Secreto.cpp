@@ -5,7 +5,6 @@ Secreto::Secreto()
 	//instancia ja o indice em 5, para quando o jogo começar a sprite começar na metade
 	this->indiceSecreto = 5;
 
-	carregarSpriteStatus();
 }
 
 void Secreto::carregarSpriteStatus()
