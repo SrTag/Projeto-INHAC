@@ -8,8 +8,11 @@ CarregaRecursos::CarregaRecursos()
 void CarregaRecursos::carregarTodasSprites()
 {
 	
-	gRecursos.carregarSpriteSheet("texto", "assets/SpritesSheet/BaseChat.png", 1, 1);
+	
+	gRecursos.carregarSpriteSheet("BotaoVoltar", "assets/SpritesSheet/botaoVoltar.png", 3, 1);
 
+	gRecursos.carregarSpriteSheet("texto", "assets/SpritesSheet/BaseChat.png", 1, 1);
+	gRecursos.carregarSpriteSheet("vitoria", "assets/SpritesSheet/Victory.png", 1, 1);
 	gRecursos.carregarSpriteSheet("amormais", "assets/SpritesSheet/amordemais.png", 1, 1);
 	gRecursos.carregarSpriteSheet("amormenos", "assets/SpritesSheet/amordemenos.png", 1, 1);
 	gRecursos.carregarSpriteSheet("dinheiromais", "assets/SpritesSheet/dinheirodemais.png", 1, 1);
@@ -42,5 +45,6 @@ void CarregaRecursos::carregarTodasSprites()
 	gRecursos.carregarAudio("somGame", "assets/SpritesSheet/gameMusic.wav");
 
 	gRecursos.carregarFonte("TextoFont", "assets/SpritesSheet/leadcoat.ttf",15);
+	gRecursos.carregarFonte("creditostxt", "assets/SpritesSheet/leadcoat.ttf", 15);
 	
 }
