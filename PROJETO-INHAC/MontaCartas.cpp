@@ -5,7 +5,8 @@ MontaCartas::MontaCartas()
 	//seta o indice carta em 0, ja q quero começar com a primeira carta
 	this->indice_carta = 0;
 	//carrega os recursos de todas as imagens imbutidos em cada classe individual
-
+	recursos = new CarregaRecursos();
+	texto = new Texto_Personagens();
 	this->carta = new Cartas[20];
 	this->statusAmor = new Amor();
 	this->statusSaude = new Saude();
@@ -14,18 +15,16 @@ MontaCartas::MontaCartas()
 	
 }
 
+void MontaCartas::proxCarta(int num)
+{
+	this->indice_carta = num;
+	texto->setTexto(num);
+}
+
 void MontaCartas::carregarSprites()
 {
-	
-	
 	// carrega as imagens, para depois setar
-
-	statusAmor->carregarStatusAmor();
-	statusDinheiro->carregarStatusDinheiro();
-	statusSaude->carregarStatusSaude();
-	statusSecreto->carregarSpriteStatus();
-
-	
+	recursos->carregarTodasSprites();
 	
 }
 
@@ -34,9 +33,15 @@ void MontaCartas::setSpriteShetStatus()
 	//esse aqui define os personagens
 
 	//seta todos os personagens em 20 cartas
+	int j=1;
 	for (int i = 0; i < 20; i++) {
-		carta[i].definirPersonagem(i);
+		carta[i].definirPersonagem("personagem" + to_string(j));
+		j++;
 	}
+	//texto
+	texto->setSpriteTexto();
+	texto->carregarFalas();
+
 	//define os status Amor,Saude,Dinheiro,Secreto.
 	statusAmor->setStatusAmor();
 	statusSaude->setStatusSaude();
@@ -49,16 +54,16 @@ void MontaCartas::carregarStatusCartas_Arq()
 {
 	///////////////////////ARQUIVO SIM///////////////////////////////////////////////////////////////////////////////////////////
 	//aqui ira passar os valores para kd carta, no q irao atualizart os arquivos SIM
-	arq_StatusSIM_Cartas.open("Arq_Status_CartasSIM.txt", ios::in);
+	arq_StatusSIM_Cartas.open("arqSIM.txt", ios::in);
 	int indice_dos_status[4];
 	
 	if (!arq_StatusSIM_Cartas.is_open()) {
-		gDebug.getCorFundo();
-		arq_StatusSIM_Cartas.open("Arq_Status_CartasSIM.txt", ios::in);
+
+		arq_StatusSIM_Cartas.open("arqSIM.txt", ios::in);
 	}
 	else
 	{
-
+		
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 4; j++) {
 
@@ -72,11 +77,11 @@ void MontaCartas::carregarStatusCartas_Arq()
 
 	//depois que o primeiro arq, fecha, eu abro o segundo, para instanciar, quando o jogador falar nao, qual resposta deve ser
 	/////////////////////ARQUIVO NAO //////////////////////////////////////////////////////////////////////////////////////////////////////
-	arq_StatusNAO_Cartas.open("Arq_StatusNAO_CartasNAO.txt", ios::in);
+	arq_StatusNAO_Cartas.open("arqNAO.txt", ios::in);
 
 	if (!arq_StatusNAO_Cartas.is_open()) {
 		gDebug.getCorFundo();
-		arq_StatusNAO_Cartas.open("Arq_Status_CartasNAO.txt", ios::in);
+		arq_StatusNAO_Cartas.open("arqNAO.txt", ios::in);
 	}
 	else {
 
@@ -86,11 +91,11 @@ void MontaCartas::carregarStatusCartas_Arq()
 				arq_StatusNAO_Cartas >> indice_dos_status[j];
 			}
 
-			carta[i].carregarArqStatusSim(indice_dos_status[0], indice_dos_status[1], indice_dos_status[2], indice_dos_status[3]);
+			carta[i].carregarArqStatusNao(indice_dos_status[0], indice_dos_status[1], indice_dos_status[2], indice_dos_status[3]);
 		}
 
 	}
-
+	
 	arq_StatusNAO_Cartas.close();
 
 }
@@ -108,11 +113,40 @@ void MontaCartas::MontandoCartas()
 	//monta a imagem da carta
 
 	carta[indice_carta].desenharCarta();
+	texto->desenharBaseTexto();
 	statusAmor->desenharSpriteAmor();
 	statusSaude->desenharSpriteSaude();
 	statusSecreto->desenharSpriteSecreto();
 	statusDinheiro->desenharSpriteDinheiro();
 }
+
+int MontaCartas::returnGameOver()
+{
+	if (statusAmor->gameOverAmor() == true) {
+
+		return true;
+	}
+	else if (statusSaude->gameOverSaude() == true) 
+	{
+		return true;
+
+	}
+	else if (statusDinheiro->gameOverDinheiro() == true)
+	{
+		return true;
+
+	}
+	else if (statusSecreto->gameOverSecreto() == true)
+	{
+		return true;
+
+	}
+	else 
+	{
+		return false;
+	}
+}
+
 
 void MontaCartas::attStatus(int qualCarta, bool sim_ou_nao)
 {
@@ -126,13 +160,15 @@ void MontaCartas::attStatus(int qualCarta, bool sim_ou_nao)
 		statusSecreto->atualizaStatusSecreto(carta[qualCarta].getAtt_SIM_Secreto());
 		
 		
+		
 	}
-	else 
+	if(sim_ou_nao == false)
 	{
 		statusAmor->atualizaStatusAmor(carta[qualCarta].getAtt_NAO_Amor());
 		statusDinheiro->atualizaStatusDinheiro(carta[qualCarta].getAtt_NAO_Dinheiro());
 		statusSaude->atualizaStatusSaude(carta[qualCarta].getAtt_NAO_Saude());
 		statusSecreto->atualizaStatusSecreto(carta[qualCarta].getAtt_NAO_Secreto());
+		
 
 	}
 
@@ -140,4 +176,60 @@ void MontaCartas::attStatus(int qualCarta, bool sim_ou_nao)
 	
 
 }
+
+void MontaCartas::qualGameOver()
+{
+	if (statusAmor->gameOverAmor() == true) {
+
+		if (statusAmor->getIndiceAmor() <= 0) 
+		{
+			gameOver.setSpriteSheet("amormenos");
+		}
+		if (statusAmor->getIndiceAmor() >= 10) 
+		{
+			gameOver.setSpriteSheet("amormais");
+		}
+		
+		
+	}
+	else if (statusSaude->gameOverSaude() == true)
+	{
+		if (statusSaude->getSaude() <= 0)
+		{
+			gameOver.setSpriteSheet("saudemenos");
+		}
+		if (statusSaude->getSaude() >= 10)
+		{
+			gameOver.setSpriteSheet("saudemais");
+		}
+
+	}
+	else if (statusDinheiro->gameOverDinheiro() == true)
+	{
+		if (statusDinheiro->getDinheiro() <= 0)
+		{
+			gameOver.setSpriteSheet("dinheiromenos");
+		}
+		if (statusDinheiro->getDinheiro() >= 10)
+		{
+			gameOver.setSpriteSheet("dinheiromais");
+		}
+
+	}
+	else if (statusSecreto->gameOverSecreto() == true)
+	{
+		if (statusSecreto->getSecreto() <= 0)
+		{
+			gameOver.setSpriteSheet("secretomenos");
+		}
+		if (statusSecreto->getSecreto() >= 10)
+		{
+			gameOver.setSpriteSheet("secretomais");
+		}
+
+	}
+	gameOver.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+}
+
+
 

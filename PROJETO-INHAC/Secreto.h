@@ -8,7 +8,7 @@ private:
 	Sprite sprite_Secreto;
 	int indiceSecreto;
 	int pos_X, pos_Y;
-
+	bool game;
 public:
 	Secreto();
 	~Secreto();
@@ -17,6 +17,8 @@ public:
 	void desenharSpriteSecreto();
 	void definePosX_and_PosY(int x, int y);
 	void atualizaStatusSecreto(int att);
-	void gameOverSecreto();
+	int gameOverSecreto();
+	void setNovaImagem(int i);
+	int getSecreto();
 };
 

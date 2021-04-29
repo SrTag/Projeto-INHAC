@@ -100,6 +100,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Amor.cpp" />
+    <ClCompile Include="CarregaRecursos.cpp" />
     <ClCompile Include="Cartas.cpp" />
     <ClCompile Include="Dinheiro.cpp" />
     <ClCompile Include="Jogo.cpp" />
@@ -107,15 +108,18 @@
     <ClCompile Include="MontaCartas.cpp" />
     <ClCompile Include="Saude.cpp" />
     <ClCompile Include="Secreto.cpp" />
+    <ClCompile Include="Texto_Personagens.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Amor.h" />
+    <ClInclude Include="CarregaRecursos.h" />
     <ClInclude Include="Cartas.h" />
     <ClInclude Include="Dinheiro.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="MontaCartas.h" />
     <ClInclude Include="Saude.h" />
     <ClInclude Include="Secreto.h" />
+    <ClInclude Include="Texto_Personagens.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

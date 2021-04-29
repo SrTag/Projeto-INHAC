@@ -2,7 +2,7 @@
 
 Cartas::Cartas()
 {
-	carregarImagens();
+	
 }
 
 void Cartas::carregarArqStatusSim(int Amor, int Saude, int Secreto, int Dinheiro)
@@ -47,28 +47,19 @@ void Cartas::setEscolhaNao()
 	//abrir esse mesmo arquivo e baixar essas informações no montaCarta
 }
 
-void Cartas::definirPersonagem(int indiceCarta)
+void Cartas::definirPersonagem(string cartaPersonagem)
 {
-	cartaAtual.setAnimacao(indiceCarta);
-}
-
-void Cartas::carregarImagens()
-{
-	gRecursos.carregarSpriteSheet("spriteCartas", "assets/SpritesSheet/cartasPersonagens.png", 1, 20);
-	gRecursos.carregarSpriteSheet("texto", "assets/SpritesSheet/BaseChat.png", 1, 1);
-
-	cartaAtual.setSpriteSheet("spriteCartas");
-	base_Texto.setSpriteSheet("texto");
+	cartaAtual.setSpriteSheet(cartaPersonagem);
 }
 
 void Cartas::desenharCarta()
 {
 	cartaAtual.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
-	base_Texto.desenhar(gJanela.getLargura() / 2, 100);
+	
 }
 
 int Cartas::getAtt_SIM_Amor()
-{
+{ 
 	return attStatus_SIM[amor];
 }
 

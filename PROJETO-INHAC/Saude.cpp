@@ -8,20 +8,15 @@ Saude::Saude()
 	
 }
 
-void Saude::carregarStatusSaude()
-{
-	gRecursos.carregarSpriteSheet("statusSaude", "assets/SpritesSheet/saude.png", 1, 11);
-}
-
 void Saude::setStatusSaude()
 {
-	sprite_Saude.setSpriteSheet("statusSaude");
+	sprite_Saude.setSpriteSheet("statusSaude" + to_string(this->indiceSaude));
 }
 
 void Saude::desenharSpriteSaude()
 {
-	sprite_Saude.setAnimacao(indiceSaude);
-	sprite_Saude.desenhar(pos_X, pos_Y);
+	
+	sprite_Saude.desenhar(300, 50);
 }
 
 void Saude::definePosX_and_PosY(int x, int y)
@@ -33,20 +28,42 @@ void Saude::definePosX_and_PosY(int x, int y)
 void Saude::atualizaStatusSaude(int att)
 {
 	if ((indiceSaude - att) <= 0 || (indiceSaude + att) >= 10) {
-		gameOverSaude();
+		
 	}
 	else {
 		if (att >= 0 && att < 10)
 		{
 			indiceSaude += att;
+			setNovaImagem(indiceSaude);
 		}
 		else if (att < 0) {
 
-			indiceSaude -= att;
+			indiceSaude += att;
+			setNovaImagem(indiceSaude);
 		}
 	}
 }
 
-void Saude::gameOverSaude()
+int Saude::gameOverSaude()
 {
+	if (indiceSaude <= 0 || indiceSaude >= 10)
+	{
+
+		game = true;
+		return game;
+	}
+	else {
+		game = false;
+		return game;
+	}
+}
+
+void Saude::setNovaImagem(int i)
+{
+	sprite_Saude.setSpriteSheet("statusSaude" + to_string(i));
+}
+
+int Saude::getSaude()
+{
+	return indiceSaude;
 }

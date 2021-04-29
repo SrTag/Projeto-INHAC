@@ -7,20 +7,16 @@ Secreto::Secreto()
 
 }
 
-void Secreto::carregarSpriteStatus()
-{
-	gRecursos.carregarSpriteSheet("statusSecret", "assets/SpritesSheet/segredo.png", 1, 11);
-}
 
 void Secreto::setStatusSecreto()
 {
-	sprite_Secreto.setSpriteSheet("statusSecret");
+	sprite_Secreto.setSpriteSheet("statusSecret" + to_string(5));
 }
 
 void Secreto::desenharSpriteSecreto()
 {
-	sprite_Secreto.setAnimacao(indiceSecreto);
-	sprite_Secreto.desenhar(pos_X, pos_Y);
+	
+	sprite_Secreto.desenhar(400, 50);
 }
 
 void Secreto::definePosX_and_PosY(int x, int y)
@@ -33,7 +29,7 @@ void Secreto::atualizaStatusSecreto(int att)
 {
 	if ((indiceSecreto - att) <= 0 || (indiceSecreto + att) >= 10) 
 	{
-		gameOverSecreto();
+		
 	}
 	else 
 	{
@@ -41,14 +37,36 @@ void Secreto::atualizaStatusSecreto(int att)
 		if (att >= 0 && att < 10)
 		{
 			indiceSecreto += att;
+			setNovaImagem(indiceSecreto);
 		}
 		else if (att < 0) {
 
-			indiceSecreto -= att;
+			indiceSecreto += att;
+			setNovaImagem(indiceSecreto);
 		}
 	}
 }
 
-void Secreto::gameOverSecreto()
+int Secreto::gameOverSecreto()
 {
+	if (indiceSecreto <= 0 || indiceSecreto >= 10)
+	{
+
+		game = true;
+		return game;
+	}
+	else {
+		game = false;
+		return game;
+	}
+}
+
+void Secreto::setNovaImagem(int i)
+{
+	sprite_Secreto.setSpriteSheet("statusSecret" + to_string(this->indiceSecreto));
+}
+
+int Secreto::getSecreto()
+{
+	return indiceSecreto;
 }

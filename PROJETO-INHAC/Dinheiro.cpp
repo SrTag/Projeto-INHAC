@@ -8,20 +8,15 @@ Dinheiro::Dinheiro()
 	
 }
 
-void Dinheiro::carregarStatusDinheiro()
-{
-	gRecursos.carregarSpriteSheet("statusDinheiro", "assets/SpritesSheet/dinheiro.png", 1, 11);
-}
-
 void Dinheiro::setStatusDinheiro()
 {
-	sprite_Dinheiro.setSpriteSheet("statusDinheiro");
+	sprite_Dinheiro.setSpriteSheet("statusDinheiro" + to_string(5));
 }
 
 void Dinheiro::desenharSpriteDinheiro()
 {
-	sprite_Dinheiro.setAnimacao(indiceDinheiro);
-	sprite_Dinheiro.desenhar(pos_X, pos_Y);
+	
+	sprite_Dinheiro.desenhar(500, 50);
 }
 
 void Dinheiro::definePosX_and_PosY(int x, int y)
@@ -33,20 +28,41 @@ void Dinheiro::definePosX_and_PosY(int x, int y)
 void Dinheiro::atualizaStatusDinheiro(int att)
 {
 	if ((indiceDinheiro - att) <= 0 || (indiceDinheiro + att) >= 10) {
-		gameOverDinheiro();
+		
 	}
 	else {
 		if (att >= 0 && att < 10)
 		{
 			indiceDinheiro += att;
+			setNovaImagem(indiceDinheiro);
 		}
 		else if (att < 0) {
 
-			indiceDinheiro -= att;
+			indiceDinheiro += att;
+			setNovaImagem(indiceDinheiro);
 		}
 	}
 }
-
-void Dinheiro::gameOverDinheiro()
+void Dinheiro::setNovaImagem(int i)
 {
+	sprite_Dinheiro.setSpriteSheet("statusDinheiro" + to_string(i));
+}
+
+int Dinheiro::getDinheiro()
+{
+	return indiceDinheiro;
+}
+
+int Dinheiro::gameOverDinheiro()
+{
+	if (indiceDinheiro <= 0 || indiceDinheiro >= 10)
+	{
+
+		game = true;
+		return game;
+	}
+	else {
+		game = false;
+		return game;
+	}
 }

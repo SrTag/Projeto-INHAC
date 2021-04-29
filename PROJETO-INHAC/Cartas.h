@@ -20,8 +20,7 @@ public:
 	// na classe do jogo, se escolher sim, ira chamar esse metodo, que ira carregar o arquivo Status, para no monta cartas baixar e manipular
 	void setEscolhaSim();
 	void setEscolhaNao();
-	void definirPersonagem(int indiceCarta);
-	void carregarImagens();
+	void definirPersonagem(string cartaPersonagem);
 	void desenharCarta();
 
 	int getAtt_SIM_Amor();

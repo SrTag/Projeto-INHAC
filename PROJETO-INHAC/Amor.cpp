@@ -4,24 +4,26 @@ Amor::Amor()
 {
 	//instancia ja o indice em 5, para quando o jogo começar a sprite começar na metade
 	this->indiceAmor = 5;
+	
+	
 
+}
+
+int Amor::getIndiceAmor()
+{
+	return indiceAmor;
 }
 
 void Amor::setStatusAmor()
 {
-	sprite_Amor.setSpriteSheet("statusAmor");
-}
-
-void Amor::carregarStatusAmor()
-{
-	gRecursos.carregarSpriteSheet("statusAmor", "assets/SpritesSheet/coracao.png", 1, 11);
+	sprite_Amor.setSpriteSheet("statusAmor" + to_string(this->indiceAmor));
+	
+	
 }
 
 void Amor::desenharSpriteAmor()
 {
-	sprite_Amor.setAnimacao(indiceAmor);
-
-	sprite_Amor.desenhar(this->pos_X,this->pos_Y);
+	sprite_Amor.desenhar(200,50);
 }
 
 void Amor::definePosX_and_PosY(int x, int y)
@@ -32,21 +34,45 @@ void Amor::definePosX_and_PosY(int x, int y)
 
 void Amor::atualizaStatusAmor(int att)
 {
+	
+
 	if ((indiceAmor - att) <= 0 || (indiceAmor + att) >= 10) {
-		gameOverAmor();
+		
 	}
 	else {
 		if (att >= 0 && att < 10)
 		{
 			indiceAmor += att;
+			setNovaImagem(indiceAmor);
+			
 		}
 		else if (att < 0) {
 
-			indiceAmor -= att;
+			indiceAmor += att;
+			setNovaImagem(indiceAmor);
 		}
 	}
 }
 
-void Amor::gameOverAmor()
+int Amor::gameOverAmor()
 {
+	if (indiceAmor <= 0 || indiceAmor >= 10) 
+	{
+
+		game = true;
+		return game;
+	}
+	else {
+		game = false;
+		return game;
+	}
+	
 }
+
+void Amor::setNovaImagem(int i)
+{
+	sprite_Amor.setSpriteSheet("statusAmor" + to_string(i));
+}
+
+
+
