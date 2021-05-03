@@ -22,30 +22,6 @@ void Cartas::carregarArqStatusNao(int Amor, int Saude, int Secreto, int Dinheiro
 	this->attStatus_NAO[dinheiro] = Dinheiro;
 }
 
-void Cartas::setEscolhaSim()
-{
-	//abre o arquivo Status, para passar os valores
-	
-	instanciador_Status.open("arq_Status.txt", ios::trunc);
-	instanciador_Status << this->attStatus_SIM[amor] << "\t" << this->attStatus_SIM[saude] << "\t" << this->attStatus_SIM[secreto] << "\t" << this->attStatus_SIM[dinheiro] << endl;
-	
-	//ARQ << 0 <<  << 1 <<  << 0 <<  << 1 << endl;
-	//abrir esse mesmo arquivo e baixar essas informações no montaCarta
-	
-	
-}
-
-void Cartas::setEscolhaNao()
-{
-	//abre o arquivo Status, para passar os valores
-
-	instanciador_Status.open("arq_Status.txt", ios::trunc);//xxxxxxxPerguntar para o sor entre essa maneira e ios::out ||ios::trunc,
-
-	instanciador_Status << this->attStatus_NAO[amor] << "\t" << this->attStatus_NAO[saude] << "\t" << this->attStatus_NAO[secreto] << "\t" << this->attStatus_NAO[dinheiro] << endl;
-
-	//ARQ << 0 <<  << 1 <<  << 0 <<  << 1 << endl;
-	//abrir esse mesmo arquivo e baixar essas informações no montaCarta
-}
 
 void Cartas::definirPersonagem(string cartaPersonagem)
 {

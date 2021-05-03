@@ -1,25 +1,17 @@
 #pragma once
 #include "libUnicornio.h"
+#include "StatusBase.h"
 
-class Dinheiro
+class Dinheiro:public StatusBase
 {
 private:
-	Sprite sprite_Dinheiro;
-	int indiceDinheiro;
-	int pos_X, pos_Y;
-	bool game;
+	
 
 public:
 	Dinheiro();
 	~Dinheiro();
 
-	void carregarStatusDinheiro();
-	void setStatusDinheiro();
-	void desenharSpriteDinheiro();
-	void definePosX_and_PosY(int x, int y);
-	void atualizaStatusDinheiro(int att);
-	int gameOverDinheiro();
-	void setNovaImagem(int i);
-	int getDinheiro();
+	void setNovaImagem(int i)override;
+	virtual void setStatus()override;
 };
 

@@ -1,7 +1,8 @@
 #pragma once
 #include "libUnicornio.h"
+#include "StatusBase.h"
 
-class Secreto
+class Secreto:public StatusBase
 {
 private:
 
@@ -12,13 +13,8 @@ private:
 public:
 	Secreto();
 	~Secreto();
-	void carregarSpriteStatus();
-	void setStatusSecreto();
-	void desenharSpriteSecreto();
-	void definePosX_and_PosY(int x, int y);
-	void atualizaStatusSecreto(int att);
-	int gameOverSecreto();
-	void setNovaImagem(int i);
-	int getSecreto();
+
+	void setNovaImagem(int i)override;
+	virtual void setStatus()override;
 };
 

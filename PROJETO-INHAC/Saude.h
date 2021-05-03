@@ -1,27 +1,17 @@
 #pragma once
 #include "libUnicornio.h"
+#include "StatusBase.h"
 
-class Saude
+class Saude:public StatusBase
 {
 private:
-
-	Sprite sprite_Saude;
-	int indiceSaude;
-	int pos_X, pos_Y;
-	bool game;
 
 public:
 	Saude();
 	~Saude();
 
-	void carregarStatusSaude();
-	void setStatusSaude();
-	void desenharSpriteSaude();
-	void definePosX_and_PosY(int x, int y);
-	void atualizaStatusSaude(int att);
-	int gameOverSaude();
-	void setNovaImagem(int i);
-	int getSaude();
+	void setNovaImagem(int i)override;
+	virtual void setStatus()override;
 
 };
 

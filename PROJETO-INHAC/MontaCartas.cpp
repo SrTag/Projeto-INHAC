@@ -2,22 +2,26 @@
 
 MontaCartas::MontaCartas()
 {
-	//seta o indice carta em 0, ja q quero começar com a primeira carta
-	this->indice_carta = 0;
-	//carrega os recursos de todas as imagens imbutidos em cada classe individual
+	//setando atributo
+	indice_carta = 0;
+
+	//alocando dinamicamente a memoria
 	recursos = new CarregaRecursos();
 	texto = new Texto_Personagens();
-	this->carta = new Cartas[20];
-	this->statusAmor = new Amor();
-	this->statusSaude = new Saude();
-	this->statusDinheiro = new Dinheiro();
-	this->statusSecreto = new Secreto();
+	carta = new Cartas[20];
+	statusAmor = new Amor();
+	statusSaude = new Saude();
+	statusDinheiro = new Dinheiro();
+	statusSecreto = new Secreto();
 	
 }
 
 void MontaCartas::proxCarta(int num)
 {
+	//prox Personagem
 	this->indice_carta = num;
+
+	//prox Fala
 	texto->setTexto(num);
 }
 
@@ -30,23 +34,24 @@ void MontaCartas::carregarSprites()
 
 void MontaCartas::setSpriteShetStatus()
 {
-	//esse aqui define os personagens
 
 	//seta todos os personagens em 20 cartas
 	int j=1;
+
 	for (int i = 0; i < 20; i++) {
 		carta[i].definirPersonagem("personagem" + to_string(j));
 		j++;
 	}
+
 	//texto
 	texto->setSpriteTexto();
 	texto->carregarFalas();
 
 	//define os status Amor,Saude,Dinheiro,Secreto.
-	statusAmor->setStatusAmor();
-	statusSaude->setStatusSaude();
-	statusDinheiro->setStatusDinheiro();
-	statusSecreto->setStatusSecreto();
+	statusAmor->setStatus();
+	statusSaude->setStatus();
+	statusDinheiro->setStatus();
+	statusSecreto->setStatus();
 	
 }
 
@@ -114,29 +119,29 @@ void MontaCartas::MontandoCartas()
 
 	carta[indice_carta].desenharCarta();
 	texto->desenharBaseTexto();
-	statusAmor->desenharSpriteAmor();
-	statusSaude->desenharSpriteSaude();
-	statusSecreto->desenharSpriteSecreto();
-	statusDinheiro->desenharSpriteDinheiro();
+	statusAmor->desenharSprite();
+	statusSaude->desenharSprite();
+	statusSecreto->desenharSprite();
+	statusDinheiro->desenharSprite();
 }
 
 int MontaCartas::returnGameOver()
 {
-	if (statusAmor->gameOverAmor() == true) {
+	if (statusAmor->gameOver() == true) {
 
 		return true;
 	}
-	else if (statusSaude->gameOverSaude() == true) 
+	else if (statusSaude->gameOver() == true) 
 	{
 		return true;
 
 	}
-	else if (statusDinheiro->gameOverDinheiro() == true)
+	else if (statusDinheiro->gameOver() == true)
 	{
 		return true;
 
 	}
-	else if (statusSecreto->gameOverSecreto() == true)
+	else if (statusSecreto->gameOver() == true)
 	{
 		return true;
 
@@ -151,78 +156,73 @@ int MontaCartas::returnGameOver()
 void MontaCartas::attStatus(int qualCarta, bool sim_ou_nao)
 {
 	
-
 	if (sim_ou_nao == true) {
 		
-		statusAmor->atualizaStatusAmor(carta[qualCarta].getAtt_SIM_Amor());
-		statusDinheiro->atualizaStatusDinheiro(carta[qualCarta].getAtt_SIM_Dinheiro());
-		statusSaude->atualizaStatusSaude(carta[qualCarta].getAtt_SIM_Saude());
-		statusSecreto->atualizaStatusSecreto(carta[qualCarta].getAtt_SIM_Secreto());
+		statusAmor->atualizaStatus(carta[qualCarta].getAtt_SIM_Amor());
+		statusDinheiro->atualizaStatus(carta[qualCarta].getAtt_SIM_Dinheiro());
+		statusSaude->atualizaStatus(carta[qualCarta].getAtt_SIM_Saude());
+		statusSecreto->atualizaStatus(carta[qualCarta].getAtt_SIM_Secreto());
 		
 		
 		
 	}
 	if(sim_ou_nao == false)
 	{
-		statusAmor->atualizaStatusAmor(carta[qualCarta].getAtt_NAO_Amor());
-		statusDinheiro->atualizaStatusDinheiro(carta[qualCarta].getAtt_NAO_Dinheiro());
-		statusSaude->atualizaStatusSaude(carta[qualCarta].getAtt_NAO_Saude());
-		statusSecreto->atualizaStatusSecreto(carta[qualCarta].getAtt_NAO_Secreto());
+		statusAmor->atualizaStatus(carta[qualCarta].getAtt_NAO_Amor());
+		statusDinheiro->atualizaStatus(carta[qualCarta].getAtt_NAO_Dinheiro());
+		statusSaude->atualizaStatus(carta[qualCarta].getAtt_NAO_Saude());
+		statusSecreto->atualizaStatus(carta[qualCarta].getAtt_NAO_Secreto());
 		
 
 	}
-
-	
-	
-
 }
 
 void MontaCartas::qualGameOver()
 {
-	if (statusAmor->gameOverAmor() == true) {
+	if (statusAmor->gameOver() == true) {
 
-		if (statusAmor->getIndiceAmor() <= 0) 
+		if (statusAmor->getIndiceStatus() <= 0)
 		{
 			gameOver.setSpriteSheet("amormenos");
 		}
-		if (statusAmor->getIndiceAmor() >= 10) 
+		if (statusAmor->getIndiceStatus() >= 10)
 		{
 			gameOver.setSpriteSheet("amormais");
 		}
 		
 		
 	}
-	else if (statusSaude->gameOverSaude() == true)
+	else if (statusSaude->gameOver() == true)
 	{
-		if (statusSaude->getSaude() <= 0)
+		if (statusSaude->getIndiceStatus() <= 0)
 		{
 			gameOver.setSpriteSheet("saudemenos");
 		}
-		if (statusSaude->getSaude() >= 10)
+		if (statusSaude->getIndiceStatus() >= 10)
 		{
 			gameOver.setSpriteSheet("saudemais");
 		}
 
 	}
-	else if (statusDinheiro->gameOverDinheiro() == true)
+	else if (statusDinheiro->gameOver() == true)
 	{
-		if (statusDinheiro->getDinheiro() <= 0)
+		if (statusDinheiro->getIndiceStatus() <= 0)
 		{
 			gameOver.setSpriteSheet("dinheiromenos");
 		}
-		if (statusDinheiro->getDinheiro() >= 10)
+		if (statusDinheiro->getIndiceStatus() >= 10)
 		{
 			gameOver.setSpriteSheet("dinheiromais");
 		}
 
 	}
-	else if (statusSecreto->gameOverSecreto() == true)
+	else if (statusSecreto->gameOver() == true)
 	{
-		if (statusSecreto->getSecreto() <= 0)
+		if (statusSecreto->getIndiceStatus() <= 0)
 		{
 			gameOver.setSpriteSheet("secretomenos");
 		}
-		if (statusSecreto->getSecreto() >= 10)
+		if (statusSecreto->getIndiceStatus() >= 10)
 		{
 			gameOver.setSpriteSheet("secretomais");
 		}

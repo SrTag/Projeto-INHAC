@@ -108,6 +108,7 @@
     <ClCompile Include="MontaCartas.cpp" />
     <ClCompile Include="Saude.cpp" />
     <ClCompile Include="Secreto.cpp" />
+    <ClCompile Include="StatusBase.cpp" />
     <ClCompile Include="Texto_Personagens.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +120,7 @@
     <ClInclude Include="MontaCartas.h" />
     <ClInclude Include="Saude.h" />
     <ClInclude Include="Secreto.h" />
+    <ClInclude Include="StatusBase.h" />
     <ClInclude Include="Texto_Personagens.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
