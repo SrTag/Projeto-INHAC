@@ -28,6 +28,18 @@ void CarregaRecursos::carregarAudio()
 
 void CarregaRecursos::carregarSprites()
 {
+	//att 2.0
+	//recursos de novos botoes
+	gRecursos.carregarSpriteSheet("BotaoLoad", "assets/SpritesSheet/botaoLoad.png", 3, 1);
+	gRecursos.carregarSpriteSheet("BotaoNewGame", "assets/SpritesSheet/botaoNewGame.png", 3, 1);
+	gRecursos.carregarSpriteSheet("BotaoSair", "assets/SpritesSheet/botaoSair.png", 3, 1);
+	gRecursos.carregarSpriteSheet("BotaoRecords", "assets/SpritesSheet/botaoRecords.png", 3, 1);
+	gRecursos.carregarSpriteSheet("saveUser", "assets/SpritesSheet/save.png", 3, 1);
+	//Funods V2.0
+	gRecursos.carregarSpriteSheet("fundoLoad", "assets/SpritesSheet/fundoLoad.png", 1, 1);
+
+	/////////////////////////////////////////////////////////////////////////
+	//versao 1
 	gRecursos.carregarSpriteSheet("BotaoSIM", "assets/SpritesSheet/botaoSim.png", 3, 1);
 	gRecursos.carregarSpriteSheet("BotaoNAO", "assets/SpritesSheet/botaoNao.png", 3, 1);
 	gRecursos.carregarSpriteSheet("fundoMenu", "assets/SpritesSheet/fundo2.png", 1, 1);

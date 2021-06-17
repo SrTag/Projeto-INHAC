@@ -108,8 +108,10 @@
     <ClCompile Include="MontaCartas.cpp" />
     <ClCompile Include="Saude.cpp" />
     <ClCompile Include="Secreto.cpp" />
+    <ClCompile Include="Senha.cpp" />
     <ClCompile Include="StatusBase.cpp" />
     <ClCompile Include="Texto_Personagens.cpp" />
+    <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Amor.h" />
@@ -120,8 +122,10 @@
     <ClInclude Include="MontaCartas.h" />
     <ClInclude Include="Saude.h" />
     <ClInclude Include="Secreto.h" />
+    <ClInclude Include="Senha.h" />
     <ClInclude Include="StatusBase.h" />
     <ClInclude Include="Texto_Personagens.h" />
+    <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
