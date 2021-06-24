@@ -29,6 +29,21 @@ void CarregaRecursos::carregarAudio()
 void CarregaRecursos::carregarSprites()
 {
 	//att 2.0
+	//personagens
+	gRecursos.carregarSpriteSheet("P1", "assets/SpritesSheet/p1.png", 1, 1);
+	gRecursos.carregarSpriteSheet("P2", "assets/SpritesSheet/p1.png", 1, 1);
+	gRecursos.carregarSpriteSheet("P3", "assets/SpritesSheet/p1.png", 1, 1);
+	gRecursos.carregarSpriteSheet("P4", "assets/SpritesSheet/p1.png", 1, 1);
+	gRecursos.carregarSpriteSheet("P5", "assets/SpritesSheet/p1.png", 1, 1);
+	//personagens BOTAO
+	gRecursos.carregarSpriteSheet("P11", "assets/SpritesSheet/p11.png", 3, 1);
+	gRecursos.carregarSpriteSheet("P12", "assets/SpritesSheet/p12.png", 3, 1);
+	gRecursos.carregarSpriteSheet("P13", "assets/SpritesSheet/p13.png", 3, 1);
+	gRecursos.carregarSpriteSheet("confirmar", "assets/SpritesSheet/botaoCONFIRM.png", 3, 1);
+
+	gRecursos.carregarSpriteSheet("RED", "assets/SpritesSheet/corV.png", 3, 1);
+	gRecursos.carregarSpriteSheet("BLUE", "assets/SpritesSheet/corB.png", 3, 1);
+	gRecursos.carregarSpriteSheet("ROXO", "assets/SpritesSheet/corR.png", 3, 1);
 	//recursos de novos botoes
 	gRecursos.carregarSpriteSheet("BotaoLoad", "assets/SpritesSheet/botaoLoad.png", 3, 1);
 	gRecursos.carregarSpriteSheet("BotaoNewGame", "assets/SpritesSheet/botaoNewGame.png", 3, 1);

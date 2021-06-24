@@ -118,8 +118,10 @@
     <ClInclude Include="CarregaRecursos.h" />
     <ClInclude Include="Cartas.h" />
     <ClInclude Include="Dinheiro.h" />
+    <ClInclude Include="Fila.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="MontaCartas.h" />
+    <ClInclude Include="NoT.h" />
     <ClInclude Include="Saude.h" />
     <ClInclude Include="Secreto.h" />
     <ClInclude Include="Senha.h" />

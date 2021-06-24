@@ -1,5 +1,6 @@
 #include "MontaCartas.h"
 
+
 MontaCartas::MontaCartas()
 {
 	//setando atributo

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "NoT.h"
+#include "libUnicornio.h"
 
 using namespace std;
 template <class T>
@@ -12,6 +13,7 @@ private:
 	NoT<T>* ultimo;
 	int qtElementos;
 	bool vazia();
+	Sprite sprite[15];
 public:
 	Fila();
 	~Fila();
@@ -19,6 +21,7 @@ public:
 	void desinfileirar();
 	T primeiroDaFila();
 	T ultimoDaFila();
+	void mostrarFila();
 	int tamanhoFila();
 };
 
@@ -116,6 +119,21 @@ inline T Fila<T>::ultimoDaFila()
 		return elemento;
 	}
 	return nullptr;
+}
+
+template<class T>
+inline void Fila<T>::mostrarFila()
+{
+	int pos=0;
+	
+	while (!gTeclado.soltou[TECLA_ESC] && !gEventos.sair)
+	{
+			uniIniciarFrame();
+			sprite[0].desenhar()
+
+			uniTerminarFrame();
+	}
+	
 }
 
 template<class T>

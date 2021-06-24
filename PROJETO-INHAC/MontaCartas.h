@@ -32,7 +32,6 @@ private:
 	Texto_Personagens* texto;
 	Sprite gameOver;
 public:
-
 	MontaCartas();
 	~MontaCartas();
 	void proxCarta(int num);
